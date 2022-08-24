@@ -228,7 +228,7 @@ if __name__ == "__main__":
         # 获取词霸每日金句
     #    note_ch, note_en = get_ciba()
     
-    if note_ch == "":
+    if note_ch.isspace():
          note_ch = get_ciba()
      
     # 公众号推送消息
