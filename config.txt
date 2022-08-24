@@ -13,8 +13,8 @@
 # 信息配置
 "weather_key": "f5d8d9953e7c49cd8150940b0ecf53f6",
 "region": "St.Catharines",
-"birthday": {"name": "小张", "birthday": "1999-01-29"},
-"love_date": "2022-08-23",
-"note_ch": "",
+# "birthday": {"name": "小张", "birthday": "1999-01-29"},
+# "love_date": "2022-08-23",
+# "note_ch": "",
 "note_en": "今天刷到抖音上都是这个，本来应该昨天做的，但是昨天都去组键盘啦，别人有的你也要有！"
 }
