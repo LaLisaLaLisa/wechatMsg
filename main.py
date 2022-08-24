@@ -236,6 +236,10 @@ if __name__ == "__main__":
     note_ch = config["note_ch"]
     note_en = config["note_en"]
     
+    if note_ch == "":
+     note_ch = get_ciba_ch()
+    if note_en == "":
+     note_en = get_ciba_en()
     #if note_ch == "" and note_en == "":
         # 获取词霸每日金句
      #  note_ch, note_en = get_ciba()
