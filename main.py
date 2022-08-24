@@ -225,7 +225,8 @@ if __name__ == "__main__":
     weather, temp, wind_dir = get_weather(region)
     note_ch = config["note_ch"]
     note_en = config["note_en"]
-    note_ch = get_ciba()
+    if notech_isspace():
+      note_ch = "true"
     
     
                                           
