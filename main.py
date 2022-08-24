@@ -133,6 +133,10 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     day = localtime().tm_mday
     today = datetime.date(datetime(year=year, month=month, day=day))
     week = week_list[today.isoweekday() % 7]
+
+    if(today.isoweekday()%7 == 5):
+        note_en = "今天是周五，马上就要放假啦"
+    
     # 获取在一起的日子的日期格式
     love_year = int(config["love_date"].split("-")[0])
     love_month = int(config["love_date"].split("-")[1])
@@ -237,9 +241,9 @@ if __name__ == "__main__":
     note_en = config["note_en"]
     
     if note_ch == "":
-     note_ch = get_ciba_ch()
+        note_ch = get_ciba_ch()
     if note_en == "":
-     note_en = get_ciba_en()
+        note_en = get_ciba_en()
     
                                           
     # 公众号推送消息
