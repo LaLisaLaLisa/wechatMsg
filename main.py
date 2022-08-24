@@ -215,6 +215,7 @@ if __name__ == "__main__":
         os.system("pause")
         sys.exit(1)
  
+    
     # 获取accessToken
     accessToken = get_access_token()
     # 接收的用户
@@ -222,12 +223,11 @@ if __name__ == "__main__":
     # 传入地区获取天气信息
     region = config["region"]
     weather, temp, wind_dir = get_weather(region)
-    
-    if note_ch.isspace():
-         note_ch = get_ciba()
-   
     note_ch = config["note_ch"]
     note_en = config["note_en"]
+    if note_ch == "":
+        # 获取词霸每日金句
+        note_ch = get_ciba()
     
     
                                           
