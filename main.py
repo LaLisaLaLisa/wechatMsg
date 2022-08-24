@@ -239,7 +239,7 @@ if __name__ == "__main__":
     if note_ch == "":
      note_ch = get_ciba_ch()
     if note_en == "":
-     note_en = get_ciba_en(
+     note_en = get_ciba_en()
     
                                           
     # 公众号推送消息
