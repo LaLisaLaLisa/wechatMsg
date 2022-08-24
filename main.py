@@ -222,11 +222,13 @@ if __name__ == "__main__":
     # 传入地区获取天气信息
     region = config["region"]
     weather, temp, wind_dir = get_weather(region)
-    note_ch = config["note_ch"]
-    note_en = config["note_en"]
     
     if note_ch.isspace():
          note_ch = get_ciba()
+   
+    note_ch = config["note_ch"]
+    note_en = config["note_en"]
+    
     
                                           
     # 公众号推送消息
