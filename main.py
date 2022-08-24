@@ -134,7 +134,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     today = datetime.date(datetime(year=year, month=month, day=day))
     week = week_list[today.isoweekday() % 7]
 
-   # int numHolder = today.isoweekday() % 7;
+  int numHolder = 0;
     
     # 注释如果要自己手动改
     if(today.isoweekday() % 7 == 0):
