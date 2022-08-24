@@ -225,8 +225,10 @@ if __name__ == "__main__":
     weather, temp, wind_dir = get_weather(region)
     note_ch = config["note_ch"]
     note_en = config["note_en"]
-    if notech_isspace():
-      note_ch = "true"
+    
+        if note_ch == "" and note_en == "":
+        # 获取词霸每日金句
+        note_ch, note_en = get_ciba()
     
     
                                           
