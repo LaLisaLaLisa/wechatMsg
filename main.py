@@ -215,9 +215,6 @@ if __name__ == "__main__":
         os.system("pause")
         sys.exit(1)
  
-     if note_ch == "":
-        # 获取词霸每日金句
-        note_ch = get_ciba()
     
     # 获取accessToken
     accessToken = get_access_token()
@@ -228,6 +225,7 @@ if __name__ == "__main__":
     weather, temp, wind_dir = get_weather(region)
     note_ch = config["note_ch"]
     note_en = config["note_en"]
+    note_ch = get_ciba()
     
     
                                           
