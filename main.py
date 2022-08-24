@@ -137,8 +137,8 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     int numHolder = today.isoweekday() % 7;
     
     # 注释如果要自己手动改
-    if(numHolder == 0):
-        note_en = "一定要好好享受周末的最后一天！不要老是想着明天要上班了就emo,珍惜今天！"
+    if(today.isoweekday() % 7 == 0):
+       note_en = "一定要好好享受周末的最后一天！不要老是想着明天要上班了就emo,珍惜今天！"
     #else if(numHolder == 1):
    #     note_en = "又要开始上班啦，又有钱钱拿了"
     #else if(numHolder == 2):
