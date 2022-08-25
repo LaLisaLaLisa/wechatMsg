@@ -135,8 +135,10 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     week = week_list[today.isoweekday() % 7]
     
     # 注释如果要自己手动改
-   if (today.isoweekday() % 7 == 0): note_en = "一定要好好享受周末的最后一天！不要老是想着明天要上班了就emo,珍惜今天！"
-   elif (today.isoweekday() % 7 == 1): note_en = "又要开始上班啦，又有钱钱拿了"
+   if (today.isoweekday() % 7 == 0): 
+        note_en = "一定要好好享受周末的最后一天！不要老是想着明天要上班了就emo,珍惜今天！"
+   if (today.isoweekday() % 7 == 1): 
+        note_en = "又要开始上班啦，又有钱钱拿了"
   # elif today.isoweekday() % 7 == 2:
    #    note_en = "今天是个好日子，也不知道昨天的班上的怎么样。希望今天也有好运气" 
    #elif today.isoweekday() % 7 == 3:
