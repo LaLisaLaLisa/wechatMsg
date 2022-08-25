@@ -261,7 +261,7 @@ if __name__ == "__main__":
     weather, temp, wind_dir = get_weather(region)
     note_ch = config["note_ch"]
     note_en = config["note_en"]
-    note_en = get_ciba_en()
+    #note_en = get_ciba_en()
     if note_ch == "":
      note_ch = get_ciba_ch()
     
