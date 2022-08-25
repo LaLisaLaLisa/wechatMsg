@@ -101,9 +101,8 @@ def get_birthday(birthday, year, today):
         birth_day = str(birth_date.__sub__(today)).split(" ")[0]
     return birth_day
  
- 
+ """
 def get_ciba_en():
-"""
     if(note_en == "1"):
         url = "http://open.iciba.com/dsapi/"
         headers = {
@@ -128,8 +127,19 @@ def get_ciba_en():
         elif num ==5:
             note_en = "周五啦！再过几个小时就可以享受周末咯"
         elif num == 6:
-            note_en = "美好的一天开始啦，你这个小猪仔现在肯定还没起床"""
+            note_en = "美好的一天开始啦，你这个小猪仔现在肯定还没起床"
 
+    url = "http://open.iciba.com/dsapi/"
+    headers = {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+    }
+    r = get(url, headers=headers)
+    note_en = r.json()["content"]
+    return note_en"""
+
+def get_ciba_en():
     url = "http://open.iciba.com/dsapi/"
     headers = {
         'Content-Type': 'application/json',
