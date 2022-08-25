@@ -140,6 +140,7 @@ def get_ciba_en():
     return note_en"""
 
 def get_ciba_en():
+ """
     url = "http://open.iciba.com/dsapi/"
     headers = {
         'Content-Type': 'application/json',
@@ -147,7 +148,7 @@ def get_ciba_en():
                       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
     }
     r = get(url, headers=headers)
-    note_en = r.json()["content"]
+    note_en = r.json()["content"]"""
     return note_en
    
 def get_ciba_ch():
@@ -281,12 +282,11 @@ if __name__ == "__main__":
     weather, temp, wind_dir = get_weather(region)
     note_ch = config["note_ch"]
     note_en = config["note_en"]
-    note_en = get_ciba_en()
     
     if note_ch == "":
      note_ch = get_ciba_ch()
-    #if note_en == "":
-    # note_en = get_ciba_en()
+    if note_en == "":
+     note_en = get_ciba_en()
      
     # 公众号推送消息
     for user in users:
