@@ -102,7 +102,7 @@ def get_birthday(birthday, year, today):
     return birth_day
  
 def get_num():
-      url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
+    url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
     year = localtime().tm_year
     month = localtime().tm_mon
@@ -112,6 +112,7 @@ def get_num():
     
     
 def get_ciba_en():
+ """
   if(note_en == "1"):
         url = "http://open.iciba.com/dsapi/"
         headers = {
@@ -136,7 +137,7 @@ def get_ciba_en():
         elif num ==5:
             note_en = "周五啦！再过几个小时就可以享受周末咯"
         elif num == 6:
-            note_en = "美好的一天开始啦，你这个小猪仔现在肯定还没起床"
+            note_en = "美好的一天开始啦，你这个小猪仔现在肯定还没起床"""
     
     return note_en
    
