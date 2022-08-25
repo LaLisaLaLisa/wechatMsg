@@ -103,14 +103,31 @@ def get_birthday(birthday, year, today):
  
  
 def get_ciba_en():
-    url = "http://open.iciba.com/dsapi/"
-    headers = {
-        'Content-Type': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+  if(note_en == "1"):
+        url = "http://open.iciba.com/dsapi/"
+        headers = {
+            'Content-Type': 'application/json',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
                       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
-    }
-    r = get(url, headers=headers)
-    note_en = r.json()["content"]
+                    }
+        r = get(url, headers=headers)
+        note_en = r.json()["content"]
+   elif(note_en == "2"):
+        if num == 0:
+            note_en = "一定要好好享受周末的最后一天！不要老是想着明天要上班了就emo,珍惜今天！"
+        elif num == 1:
+            note_en = "又要开始上班啦，又有钱钱拿"
+        elif num == 2:
+            note_en = "今天是个好日子，也不知道昨天的班上的怎么样。希望今天也有好运气" 
+        elif num == 3:
+            note_en = "马上一周就要过去一半啦，今天回家吃点香香的"
+        elif num ==4:
+            note_en = "再挺两天就周末啦,周四也是要好好上班的一天"
+        elif num ==5:
+            note_en = "周五啦！再过几个小时就可以享受周末咯"
+        elif num == 6:
+            note_en = "美好的一天开始啦，你这个小猪仔现在肯定还没起床"
+    
     return note_en
    
 def get_ciba_ch():
@@ -219,6 +236,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
                       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
     }
+    
     response = post(url, headers=headers, json=data).json()
     if response["errcode"] == 40037:
         print("推送消息失败，请检查模板id是否正确")
