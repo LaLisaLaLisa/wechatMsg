@@ -149,13 +149,17 @@ def get_ciba_ch():
 
 
 # 根据时间打招呼
-def get_greet_note(greet_note, time):
+def get_greet_note(greet_note, time, isDayOff):
     if 8 <= time & time <= 9:
         greet_note = "早上好呀，今天也是活力满满的一天"
     elif 12 <= time & time <= 13:
         greet_note = "中午啦，有没有好好吃饭鸭"
-    elif 16 <= time & time <= 17:
+    elif 17 <= time & time <= 18:
         greet_note = "终于休息咯，快回家躺在床上当个咸鱼吧"
+    elif 23 <= time & isDayOff:
+        greet_note = "快起来玩游戏啦，当然也别忘了要好好休息，周末愉快，努力把把吃鸡"
+    elif 23 <= time & isDayOff == False:
+        greet_note = "该睡觉啦，放下手机订好闹钟，明天还是打工人的一天，晚安"
     else:
         greet_note = "今日份播报来啦"
     return str(random_emoji()) + greet_note + str(random_emoji())
@@ -193,8 +197,11 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     today = curr_time.date()
     week = week_list[today.isoweekday() % 7]
 
-    # 根据时间更换打招呼
-    greet_note = get_greet_note(greet_note, curr_time.hour)
+    # 时间更换打招呼
+    if today.isoweekday() % 7 >= 5:
+        greet_note = get_greet_note(greet_note, curr_time.hour, True)
+    else:
+        greet_note = get_greet_note(greet_note, curr_time.hour, False)
 
     # 根据星期几 发送不同的配置句子
     extra_msg = get_today_day(today.isoweekday() % 7, extra_msg)
