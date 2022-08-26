@@ -145,6 +145,16 @@ def get_ciba_ch():
     note_ch = r.json()["note"]
     return note_ch
 
+def get_greet_note(greet_note,time):
+    if 8 <= time & time<=10:
+        greet_note = "早上好"
+    elif 12<= time & time<=14:
+        greet_note = "中午啦"
+    elif 16<= time & time<=18:
+        greet_note = "休息咯"
+    else:
+        greet_note = "今日份播报来啦"
+    return greet_note
 
 def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en, extra_msg,greet_note):
     
@@ -156,17 +166,17 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     # 手动转换时间
     utc = timezone.utc
     utc_time = datetime.utcnow().replace(tzinfo=utc)
-    newyork_time = timezone(timedelta(hours=-4))
-    time_newyork = utc_time.astimezone(newyork_time)
+    toronto_time = timezone(timedelta(hours=-4))
+    curr_time = utc_time.astimezone(toronto_time)
     
-    year = time_newyork.year
-    month = time_newyork.month
-    day = time_newyork.day
-    today = time_newyork.date()
+    year = curr_time.year
+    month = curr_time.month
+    day = curr_time.day
+    today = curr_time.date()
     week = week_list[today.isoweekday() % 7]
     
-    # 跟据时间 发送不同的打招呼
-    greet_note = str(time_newyork.time())
+    # 根据时间更换打招呼
+    greet_note = get_greet_note(greet_note,curr_time.hour)
     
     # 根据星期几 发送不同的配置句子
     note_en = get_today_day(today.isoweekday() % 7,note_en)
