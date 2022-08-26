@@ -1,7 +1,7 @@
 import random
 from time import localtime
 from requests import get, post
-from datetime import datetime, date, timedelta,timezone
+from datetime import datetime, date, timedelta, timezone
 from zhdate import ZhDate
 import sys
 import os
@@ -12,6 +12,7 @@ def get_color():
     get_colors = lambda n: list(map(lambda i: "#" + "%06x" % random.randint(0, 0xFFFFFF), range(n)))
     color_list = get_colors(100)
     return random.choice(color_list)
+
 
 def get_access_token():
     # appId
@@ -28,6 +29,7 @@ def get_access_token():
         sys.exit(1)
     # print(access_token)
     return access_token
+
 
 def get_weather(region):
     headers = {
@@ -57,6 +59,7 @@ def get_weather(region):
     # 风向
     wind_dir = response["now"]["windDir"]
     return weather, temp, wind_dir
+
 
 def get_birthday(birthday, year, today):
     birthday_year = birthday.split("-")[0]
@@ -98,7 +101,8 @@ def get_birthday(birthday, year, today):
         birth_day = str(birth_date.__sub__(today)).split(" ")[0]
     return birth_day
 
-def get_today_day(num,note_en):
+
+def get_today_day(num, note_en):
     if num == 0:
         note_en = "一定要好好享受周末的最后一天！不要老是想着明天要上班了就emo,珍惜今天！"
     elif num == 1:
@@ -107,17 +111,18 @@ def get_today_day(num,note_en):
         note_en = "今天是个好日子，也不知道昨天的班上的怎么样。希望今天也有好运气"
     elif num == 3:
         note_en = "马上一周就要过去一半啦，今天回家吃点香香的"
-    elif num ==4:
+    elif num == 4:
         note_en = "再挺两天就周末啦,周四也是要好好上班的一天"
-    elif num ==5:
+    elif num == 5:
         note_en = "周五啦！再过几个小时就可以享受周末咯"
     elif num == 6:
         note_en = "美好的一天开始啦，你这个小猪仔现在肯定还没起床"
     else:
         note_en = "出错啦,再等等我修复吧"
     # 微信平台配置
-   # return note_en + str(random_emoji()) 
-    return note_en
+    return note_en + str(random_emoji())
+    # return note_en
+
 
 def get_ciba_en():
     url = "http://open.iciba.com/dsapi/"
@@ -130,6 +135,7 @@ def get_ciba_en():
     note_en = r.json()["content"]
     return note_en
 
+
 def get_ciba_ch():
     url = "http://open.iciba.com/dsapi/"
     headers = {
@@ -141,33 +147,39 @@ def get_ciba_ch():
     note_ch = r.json()["note"]
     return note_ch
 
+
 # 根据时间打招呼
-def get_greet_note(greet_note,time):
-    if 8 <= time & time<=9:
+def get_greet_note(greet_note, time):
+    if 8 <= time & time <= 9:
         greet_note = "早上好呀，今天也是活力满满的一天"
-    elif 12<= time & time<=13:
+    elif 12 <= time & time <= 13:
         greet_note = "中午啦，有没有好好吃饭鸭"
-    elif 16<= time & time<=17:
+    elif 16 <= time & time <= 17:
         greet_note = "终于休息咯，快回家躺在床上当个咸鱼吧"
     else:
         greet_note = "今日份播报来啦"
     return str(random_emoji()) + greet_note + str(random_emoji())
 
+
 # 随机表情
 def random_emoji():
-    emojiList = ["♡(*ฅˊ˘ˋฅ*)♡","(๑ `▽´๑)","(*´°`*)","꒰*´◒`*꒱","ॱଳॱ","꒳ᵒ꒳ᵎᵎᵎ","๐˙Ⱉ˙๐","( ๑ˊ•̥▵•)੭₎₎"," ⁄(⁄⁄•⁄ω⁄•⁄⁄)⁄ ","(⑉･⌓･⑉)",
-               "(⑉･-･⑉)","꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱","( ᐖ )","(˶˚ ᗨ ˚˶)","(๑•̀ㅂ•́)","୧((〃•̀ꇴ•〃))૭⁺","(๑˃́ꇴ˂̀๑)","(๑ `▽´๑)","✧(๑•̀ㅁ•́ฅ)",
-                "(๑ ๑)♡","*ଘ(♡⸝⸝•༝•⸝⸝)੭","*ଘ(੭*ˊᵕˋ)੭* ੈ♡‧₊˚","(•̤̀ᵕ•̤ )ᵒᵏᵎᵎᵎᵎ","(୨୧•͈ᴗ•͈)","(•̀ᴗ•́)"," ʕ๑•ɷ•๑ʔ","ʕ๑•ɷ•๑ʔ"]
-    holder = emojiList[random.randint(0, len(emojiList)-1)]
+    emojiList = ["♡(*ฅˊ˘ˋฅ*)♡", "(๑ `▽´๑)", "(*´°`*)", "꒰*´◒`*꒱", "ॱଳॱ", "꒳ᵒ꒳ᵎᵎᵎ", "๐˙Ⱉ˙๐", "( ๑ˊ•̥▵•)੭₎₎",
+                 " ⁄(⁄⁄•⁄ω⁄•⁄⁄)⁄ ", "(⑉･⌓･⑉)",
+                 "(⑉･-･⑉)", "꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱", "( ᐖ )", "(˶˚ ᗨ ˚˶)", "(๑•̀ㅂ•́)", "୧((〃•̀ꇴ•〃))૭⁺", "(๑˃́ꇴ˂̀๑)", "(๑ `▽´๑)",
+                 "✧(๑•̀ㅁ•́ฅ)",
+                 "(๑ ๑)♡", "*ଘ(♡⸝⸝•༝•⸝⸝)੭", "*ଘ(੭*ˊᵕˋ)੭* ੈ♡‧₊˚", "(•̤̀ᵕ•̤ )ᵒᵏᵎᵎᵎᵎ", "(୨୧•͈ᴗ•͈)", "(•̀ᴗ•́)", " ʕ๑•ɷ•๑ʔ",
+                 "ʕ๑•ɷ•๑ʔ"]
+    holder = emojiList[random.randint(0, len(emojiList) - 1)]
     return holder
 
-def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en, extra_msg,handwrite_msg,greet_note):
-    
+
+def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en, extra_msg,
+                 handwrite_msg, greet_note):
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
-    
+
     # 根据日期计算星期几
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
-    
+
     # 手动转换时间
     # EST 冬令时了需要修改
     utc = timezone.utc
@@ -176,16 +188,16 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     # 多伦多冬令时时间 可以跟据自己时区修改
     # toronto_time = timezone(timedelta(hours=-5))
     curr_time = utc_time.astimezone(toronto_time)
-    
+
     year = curr_time.year
     today = curr_time.date()
     week = week_list[today.isoweekday() % 7]
-    
+
     # 根据时间更换打招呼
-    greet_note = get_greet_note(greet_note,curr_time.hour)
-    
+    greet_note = get_greet_note(greet_note, curr_time.hour)
+
     # 根据星期几 发送不同的配置句子
-    extra_msg = get_today_day(today.isoweekday() % 7,extra_msg)
+    extra_msg = get_today_day(today.isoweekday() % 7, extra_msg)
 
     # 获取在一起的日子的日期格式
     love_year = int(config["love_date"].split("-")[0])
@@ -194,13 +206,13 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     love_date = date(love_year, love_month, love_day)
     # 获取在一起的日期差
     love_days = str(today.__sub__(love_date)).split(" ")[0]
-    
+
     # 获取所有生日数据
     birthdays = {}
     for k, v in config.items():
         if k[0:5] == "birth":
             birthdays[k] = v
-            
+
     # 发送数据
     data = {
         "touser": to_user,
@@ -268,7 +280,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
                       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
     }
-    
+
     # 推送
     response = post(url, headers=headers, json=data).json()
     if response["errcode"] == 40037:
@@ -296,7 +308,6 @@ if __name__ == "__main__":
         os.system("pause")
         sys.exit(1)
 
-
     # 获取accessToken
     accessToken = get_access_token()
     # 接收的用户
@@ -309,15 +320,15 @@ if __name__ == "__main__":
     extra_msg = config["extra_msg"]
     handwrite_msg = config["handwrite_msg"]
     greet_note = config["greet_note"]
-    
+
     # 每日金句 中/英语
     if note_ch == "":
         note_ch = get_ciba_ch()
     if note_en == "":
         note_en = get_ciba_en()
-    
-    
+
     # 公众号推送消息
     for user in users:
-        send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en, extra_msg,handwrite_msg,greet_note)
+        send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en, extra_msg, handwrite_msg,
+                     greet_note)
     os.system("pause")
