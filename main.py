@@ -146,19 +146,14 @@ def get_ciba_ch():
     return note_ch
 
 
-def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en, extra_msg):
+def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en, extra_msg,greet_note):
     
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
     
     # 根据日期计算星期几
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
-    year = localtime().tm_year
-    month = localtime().tm_mon
-    day = localtime().tm_mday
-    today = datetime.date(datetime(year=year, month=month, day=day))
-    week = week_list[today.isoweekday() % 7]
     
-     # 手动转换时间
+    # 手动转换时间
     utc = timezone.utc
     utc_time = datetime.utcnow().replace(tzinfo=utc)
     newyork_time = timezone(timedelta(hours=-4))
@@ -170,7 +165,8 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     today = time_newyork.date()
     week = week_list[today.isoweekday() % 7]
     
-# 根据星期几 发送不同的配置句子
+    
+    # 根据星期几 发送不同的配置句子
     note_en = get_today_day(today.isoweekday() % 7,note_en)
 
     # 获取在一起的日子的日期格式
@@ -227,6 +223,10 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
             },
             "extra_msg": {
                 "value": extra_msg,
+                "color": get_color()
+            },
+            "greet_note": {
+                "value": greet_note,
                 "color": get_color()
             }
         }
@@ -286,11 +286,11 @@ if __name__ == "__main__":
     # 每日金句
     if note_ch == "":
         note_ch = get_ciba_ch()
-
     extra_msg = config["extra_msg"]
+    greet_note = config["greet_note"]
     
     
     # 公众号推送消息
     for user in users:
-        send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en, extra_msg)
+        send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en, extra_msg,greet_note)
     os.system("pause")
