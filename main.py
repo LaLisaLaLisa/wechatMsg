@@ -267,7 +267,10 @@ if __name__ == "__main__":
     if note_ch == "":
         note_ch = get_ciba_ch()
 
+    tester = config["tester"]
+    
+    
     # 公众号推送消息
     for user in users:
-        send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en)
+        send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en,tester)
     os.system("pause")
