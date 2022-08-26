@@ -121,7 +121,7 @@ def get_today_day(num,note_en):
         else:
             note_en = "出错啦,再等等我修复吧"
     # 微信平台配置
-    return note_en;
+    return note_en + str(random_emoji());
 
 def get_ciba_en():
     url = "http://open.iciba.com/dsapi/"
@@ -145,6 +145,7 @@ def get_ciba_ch():
     note_ch = r.json()["note"]
     return note_ch
 
+# 根据时间打招呼
 def get_greet_note(greet_note,time):
     if 8 <= time & time<=10:
         greet_note = "早上好呀，今天也是活力满满的一天"
@@ -156,6 +157,7 @@ def get_greet_note(greet_note,time):
         greet_note = "今日份播报来啦"
     return str(random_emoji()) + greet_note + str(random_emoji())
 
+# 随机表情
 def random_emoji():
     EmojiList = ['♡(*ฅˊ˘ˋฅ*)♡','(๑ `▽´๑)','(*´°`*)','꒰*´◒`*꒱','ॱଳॱ','꒳ᵒ꒳ᵎᵎᵎ','๐˙Ⱉ˙๐','( ๑ˊ•̥▵•)੭₎₎',' ⁄(⁄⁄•⁄ω⁄•⁄⁄)⁄ ','(⑉･⌓･⑉)',
                  '(⑉･-･⑉)','꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱','( ᐖ )','(˶˚ ᗨ ˚˶)','(๑•̀ㅂ•́)','୧((〃•̀ꇴ•〃))૭⁺','(๑˃́ꇴ˂̀๑)','(๑ `▽´๑)','✧ (๑•̀ㅁ•́ฅ)',
@@ -170,14 +172,15 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
     
     # 手动转换时间
+    # EST 冬令时了需要修改
     utc = timezone.utc
     utc_time = datetime.utcnow().replace(tzinfo=utc)
     toronto_time = timezone(timedelta(hours=-4))
+    # 多伦多冬令时时间 可以跟据自己时区修改
+    # toronto_time = timezone(timedelta(hours=-5))
     curr_time = utc_time.astimezone(toronto_time)
     
     year = curr_time.year
-    month = curr_time.month
-    day = curr_time.day
     today = curr_time.date()
     week = week_list[today.isoweekday() % 7]
     
