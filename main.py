@@ -116,7 +116,8 @@ def get_today_day(num,note_en):
     else:
         note_en = "出错啦,再等等我修复吧"
     # 微信平台配置
-    return note_en + str(random_emoji())
+    note_en = note_en + str(random_emoji())
+    return note_en 
 
 def get_ciba_en():
     url = "http://open.iciba.com/dsapi/"
@@ -150,7 +151,9 @@ def get_greet_note(greet_note,time):
         greet_note = "终于休息咯，快回家躺在床上当个咸鱼吧"
     else:
         greet_note = "今日份播报来啦"
-    return str(random_emoji()) + greet_note + str(random_emoji())
+        
+    greet_note = str(random_emoji()) + greet_note + str(random_emoji())
+    return greet_note
 
 # 随机表情
 def random_emoji():
