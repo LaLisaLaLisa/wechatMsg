@@ -259,7 +259,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
                 "color": get_color()
             },
             "extra_msg": {
-                "value": "{} {} {}".format(str(random_emoji()), extra_msg, str(random_emoji())),
+                "value": "{} {}".format(extra_msg, str(random_emoji())),
                 "color": get_color()
             },
             "greet_note": {
