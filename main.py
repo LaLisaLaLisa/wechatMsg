@@ -116,7 +116,7 @@ def get_today_day(num,note_en):
     else:
         note_en = "出错啦,再等等我修复吧"
     # 微信平台配置
-    note_en = note_en + str(random_emoji())
+    #note_en = note_en + str(random_emoji())
     return note_en 
 
 def get_ciba_en():
@@ -152,7 +152,7 @@ def get_greet_note(greet_note,time):
     else:
         greet_note = "今日份播报来啦"
         
-    greet_note = str(random_emoji()) + greet_note + str(random_emoji())
+    #greet_note = str(random_emoji()) + greet_note + str(random_emoji())
     return greet_note
 
 # 随机表情
