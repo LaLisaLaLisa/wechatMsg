@@ -23,5 +23,5 @@
 # 1.金句拉取 2.手动配置 3.手动在这写
 "note_en": "2",
 
-"tester" : "checkcheck"
+"extra_msg" : "checkcheck"
 }
