@@ -157,9 +157,8 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     day = localtime().tm_mday
     today = datetime.date(datetime(year=year, month=month, day=day))
     week = week_list[today.isoweekday() % 7]
-    
-    extra_msg = today
-    # 根据星期几 发送不同的配置句子
+
+# 根据星期几 发送不同的配置句子
     note_en = get_today_day(today.isoweekday() % 7,note_en)
 
     # 获取在一起的日子的日期格式
