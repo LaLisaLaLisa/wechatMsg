@@ -99,27 +99,22 @@ def get_birthday(birthday, year, today):
     return birth_day
 
 def get_today_day(num,note_en):
-    # 随机英文金句
-    if note_en == "1":
-        note_en = get_ciba_en()
-    # 预先配置
-    elif note_en == "2":
-        if num == 0:
-            note_en = "一定要好好享受周末的最后一天！不要老是想着明天要上班了就emo,珍惜今天！"
-        elif num == 1:
-            note_en = "又要开始上班啦，又有钱钱拿"
-        elif num == 2:
-            note_en = "今天是个好日子，也不知道昨天的班上的怎么样。希望今天也有好运气"
-        elif num == 3:
-            note_en = "马上一周就要过去一半啦，今天回家吃点香香的"
-        elif num ==4:
-            note_en = "再挺两天就周末啦,周四也是要好好上班的一天"
-        elif num ==5:
-            note_en = "周五啦！再过几个小时就可以享受周末咯"
-        elif num == 6:
-            note_en = "美好的一天开始啦，你这个小猪仔现在肯定还没起床"
-        else:
-            note_en = "出错啦,再等等我修复吧"
+    if num == 0:
+        note_en = "一定要好好享受周末的最后一天！不要老是想着明天要上班了就emo,珍惜今天！"
+    elif num == 1:
+        note_en = "又要开始上班啦，又有钱钱拿"
+    elif num == 2:
+        note_en = "今天是个好日子，也不知道昨天的班上的怎么样。希望今天也有好运气"
+    elif num == 3:
+        note_en = "马上一周就要过去一半啦，今天回家吃点香香的"
+    elif num ==4:
+        note_en = "再挺两天就周末啦,周四也是要好好上班的一天"
+    elif num ==5:
+        note_en = "周五啦！再过几个小时就可以享受周末咯"
+    elif num == 6:
+        note_en = "美好的一天开始啦，你这个小猪仔现在肯定还没起床"
+    else:
+        note_en = "出错啦,再等等我修复吧"
     # 微信平台配置
     return note_en + str(random_emoji());
 
@@ -164,7 +159,7 @@ def random_emoji():
                  '(๑ ๑)♡','*ଘ(♡⸝⸝•༝•⸝⸝)੭','*ଘ(੭*ˊᵕˋ)੭* ੈ♡‧₊˚','(•̤̀ᵕ•̤ )ᵒᵏᵎᵎᵎᵎ','(୨୧•͈ᴗ•͈)','(•̀ᴗ•́)',' ʕ๑•ɷ•๑ʔ','ʕ๑•ɷ•๑ʔ']
     return EmojiList[random.randint(0, len(EmojiList)-1)]
 
-def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en, extra_msg,greet_note):
+def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en, extra_msg,handwrite_msg,greet_note):
     
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
     
@@ -188,7 +183,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     greet_note = get_greet_note(greet_note,curr_time.hour)
     
     # 根据星期几 发送不同的配置句子
-    note_en = get_today_day(today.isoweekday() % 7,note_en)
+    extra_msg = get_today_day(today.isoweekday() % 7,extra_msg)
 
     # 获取在一起的日子的日期格式
     love_year = int(config["love_date"].split("-")[0])
@@ -249,6 +244,10 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
             "greet_note": {
                 "value": greet_note,
                 "color": get_color()
+            },
+            "handwrite_msg": {
+                "value": handwrite_msg,
+                "color": get_color()
             }
         }
     }
@@ -304,14 +303,18 @@ if __name__ == "__main__":
     weather, temp, wind_dir = get_weather(region)
     note_ch = config["note_ch"]
     note_en = config["note_en"]
-    # 每日金句
+    extra_msg = config["extra_msg"]
+    handwrite_msg = config["handwrite_msg"]
+    greet_note = config["greet_note"]
+    
+    # 每日金句 中/英语
     if note_ch == "":
         note_ch = get_ciba_ch()
-    extra_msg = config["extra_msg"]
-    greet_note = config["greet_note"]
+    if note_en == "":
+        note_en = get_ciba_en()
     
     
     # 公众号推送消息
     for user in users:
-        send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en, extra_msg,greet_note)
+        send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en, extra_msg,handwrite_msg,greet_note)
     os.system("pause")
