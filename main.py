@@ -211,7 +211,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
                 "value": note_ch,
                 "color": get_color()
             },
-            "tester": {
+            "extra_msg": {
                 "value": extra_msg,
                 "color": get_color()
             }
