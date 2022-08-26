@@ -5,7 +5,7 @@
 # 公众号appSecret
 "app_secret": "453e7a49afdbf42e914859461b14167e",
 # 模板消息id
-"template_id": "LokxskjA89uoH90xyjb3qt-XIqieRdX8QkDOzhBxFno",
+"template_id": "QaZIBoI60bPxv2smAxDCEFeP-aYddQetoctlcd9vpRg",
 # 接收公众号消息的微信号，如果有多个，需要在[]里用英文逗号间隔，例如["wx1", "wx2"]
 # "user": ["o3PBy6FgVQlBg0rIYpuPnbt1JcBc","o3PBy6MGfPahCAs9mB64Qjna1XBc"],
  "user": ["o3PBy6FgVQlBg0rIYpuPnbt1JcBc"],
@@ -13,15 +13,18 @@
 # 信息配置
 "weather_key": "f5d8d9953e7c49cd8150940b0ecf53f6",
 "region": "St.Catharines",
+
+# 暂时用不上的信息
 "birthday": {"name": "小张", "birthday": "1999-01-29"},
 "love_date": "2022-08-23",
 
-# 金句
+# 中文金句 = 为空自己拉取
 "note_ch": "",
 
 # 自己改的
-# 1.金句拉取 2.手动配置 3.手动在这写
+# 1.英文金句拉取 2.代码里配置好
 "note_en": "2",
 
-"extra_msg" : "checkcheck"
+# 不敷衍自己改
+"extra_msg" : "今天的不敷衍，我还没想好写啥哈哈哈哈"
 }
