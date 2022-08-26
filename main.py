@@ -120,8 +120,7 @@ def get_today_day(num, note_en):
     else:
         note_en = "出错啦,再等等我修复吧"
     # 微信平台配置
-    return str(random_emoji()) + note_en
-    # return note_en
+    return note_en
 
 
 def get_ciba_en():
@@ -162,7 +161,7 @@ def get_greet_note(greet_note, time, isDayOff):
         greet_note = "该睡觉啦，放下手机订好闹钟，明天还是打工人的一天，晚安"
     else:
         greet_note = "今日份播报来啦"
-    return str(random_emoji()) + greet_note + str(random_emoji())
+    return greet_note
 
 
 # 随机表情
@@ -260,11 +259,11 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
                 "color": get_color()
             },
             "extra_msg": {
-                "value": extra_msg,
+                "value": "{} {} {}".format(str(random_emoji()), extra_msg, str(random_emoji())),
                 "color": get_color()
             },
             "greet_note": {
-                "value": greet_note,
+                "value": "{} {} {}".format(str(random_emoji()), greet_note, str(random_emoji())),
                 "color": get_color()
             },
             "handwrite_msg": {
