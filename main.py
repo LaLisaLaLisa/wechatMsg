@@ -13,7 +13,6 @@ def get_color():
     color_list = get_colors(100)
     return random.choice(color_list)
 
-
 def get_access_token():
     # appId
     app_id = config["app_id"]
@@ -29,7 +28,6 @@ def get_access_token():
         sys.exit(1)
     # print(access_token)
     return access_token
-
 
 def get_weather(region):
     headers = {
@@ -59,7 +57,6 @@ def get_weather(region):
     # 风向
     wind_dir = response["now"]["windDir"]
     return weather, temp, wind_dir
-
 
 def get_birthday(birthday, year, today):
     birthday_year = birthday.split("-")[0]
@@ -150,7 +147,10 @@ def get_ciba_ch():
 
 
 def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en, extra_msg):
+    
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
+    
+    # 根据日期计算星期几
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
     year = localtime().tm_year
     month = localtime().tm_mon
@@ -158,7 +158,8 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     today = datetime.date(datetime(year=year, month=month, day=day))
     week = week_list[today.isoweekday() % 7]
     
-    # 金句配置
+    extra_msg = today
+    # 根据星期几 发送不同的配置句子
     note_en = get_today_day(today.isoweekday() % 7,note_en)
 
     # 获取在一起的日子的日期格式
@@ -173,6 +174,8 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     for k, v in config.items():
         if k[0:5] == "birth":
             birthdays[k] = v
+            
+    # 发送数据
     data = {
         "touser": to_user,
         "template_id": config["template_id"],
@@ -231,6 +234,8 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
                       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
     }
+    
+    # 推送
     response = post(url, headers=headers, json=data).json()
     if response["errcode"] == 40037:
         print("推送消息失败，请检查模板id是否正确")
