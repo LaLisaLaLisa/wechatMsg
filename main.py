@@ -217,6 +217,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
         if k[0:5] == "birth":
             birthdays[k] = v
 
+    emoji = "CUTE EMOJI"
     # 发送数据
     data = {
         "touser": to_user,
@@ -261,7 +262,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
                 "color": get_color()
             },
             "greet_note": {
-                "value": "{} {} {}".format(str(get_random_emoji(" ")), greet_note, str(get_random_emoji(" "))),
+                "value": "{} {} {}".format(str(get_random_emoji(emoji)), greet_note, str(get_random_emoji(emoji))),
                 # "value":  greet_note,
                 "color": get_color()
             },
