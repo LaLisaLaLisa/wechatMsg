@@ -153,7 +153,7 @@ def get_greet_note(greet_note,time):
         greet_note = "今日份播报来啦"
         
     #greet_note = str(random_emoji()) + greet_note + str(random_emoji())
-    return greet_note
+    return str(random_emoji()) + greet_note
 
 # 随机表情
 def random_emoji():
