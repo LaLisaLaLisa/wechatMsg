@@ -149,7 +149,7 @@ def get_ciba_ch():
     return note_ch
 
 
-def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en,tester):
+def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en, extra_msg):
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
     year = localtime().tm_year
@@ -212,7 +212,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
                 "color": get_color()
             },
             "tester": {
-                "value": tester,
+                "value": extra_msg,
                 "color": get_color()
             }
         }
@@ -271,10 +271,10 @@ if __name__ == "__main__":
     if note_ch == "":
         note_ch = get_ciba_ch()
 
-    tester = config["tester"]
+    extra_msg = config["extra_msg"]
     
     
     # 公众号推送消息
     for user in users:
-        send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en,tester)
+        send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en, extra_msg)
     os.system("pause")
