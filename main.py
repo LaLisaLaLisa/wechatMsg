@@ -160,8 +160,10 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     
 
     # todo 更改时间错误
-    local_time = datetime.utcnow().replace(tzinfo=(timezone(timedelta(hours=-4))))
-    extra_msg = local_time
+    utc = timezone.utc
+    utc_time = datetime.utcnow().replace(tzinfo=utc)
+    newyork_time = timezone(timedelta(hours=-4))
+    time_newyork = utc_time.astimezone(newyork_time)
     
 # 根据星期几 发送不同的配置句子
     note_en = get_today_day(today.isoweekday() % 7,note_en)
