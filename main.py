@@ -165,6 +165,8 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     today = time_newyork.date()
     week = week_list[today.isoweekday() % 7]
     
+    # 跟据时间 发送不同的打招呼
+    greet_note = str(time_newyork.time())
     
     # 根据星期几 发送不同的配置句子
     note_en = get_today_day(today.isoweekday() % 7,note_en)
