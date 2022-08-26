@@ -5,10 +5,10 @@
 # 公众号appSecret
 "app_secret": "453e7a49afdbf42e914859461b14167e",
 # 模板消息id
-"template_id": "3Rh01XrKe9nthg2Wl7batololWe61Q5gGS45r33u5Hw",
+"template_id": "UJhy5ZxAHzzWdUcqV57xEPTiPLYWlLwmxP-23SqacrA",
 # 接收公众号消息的微信号，如果有多个，需要在[]里用英文逗号间隔，例如["wx1", "wx2"]
-# "user": ["o3PBy6FgVQlBg0rIYpuPnbt1JcBc","o3PBy6MGfPahCAs9mB64Qjna1XBc"],
- "user": ["o3PBy6FgVQlBg0rIYpuPnbt1JcBc"],
+ "user": ["o3PBy6FgVQlBg0rIYpuPnbt1JcBc","o3PBy6MGfPahCAs9mB64Qjna1XBc"],
+# "user": ["o3PBy6FgVQlBg0rIYpuPnbt1JcBc"],
  
 # 信息配置
 "weather_key": "f5d8d9953e7c49cd8150940b0ecf53f6",
@@ -20,7 +20,7 @@
            , "name" : "豆丁", "birthday" : "1994-01-06"},
 
 # 日期计算
-"love_date": "2019-10-09",
+"love_day": "2019-10-09",
 
 # 中文金句 = 为空自己拉取
 "note_ch": "",
@@ -29,7 +29,7 @@
 "note_en": "",
 
 # 不敷衍 需要自己改 
-"handwrite_msg" : "上一个搞错了点东西，重新来一下！！！！！",
+"handwrite_msg" : "再重新来一次哈哈哈哈哈，这次ok啦",
 
 # 敷衍的 留空就好
 "extra_msg" : "",
