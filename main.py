@@ -147,14 +147,18 @@ def get_ciba_ch():
 
 def get_greet_note(greet_note,time):
     if 8 <= time & time<=10:
-        greet_note = "早上好"
+        greet_note = "早上好呀，今天也是活力满满的一天"
     elif 12<= time & time<=14:
-        greet_note = "中午啦"
+        greet_note = "中午啦，有没有好好吃饭鸭"
     elif 16<= time & time<=18:
-        greet_note = "休息咯"
+        greet_note = "终于休息咯，快回家躺在床上当个咸鱼吧"
     else:
         greet_note = "今日份播报来啦"
-    return greet_note
+    return greet_note + str(random_emoji())
+
+def random_emoji():
+    EmojiList = ['♡(*ฅˊ˘ˋฅ*)♡','(๑ `▽´๑)','(*´°`*)','꒰*´◒`*꒱']
+    return EmojiList[random.randint(0, len(EmojiList)-1)]
 
 def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en, extra_msg,greet_note):
     
