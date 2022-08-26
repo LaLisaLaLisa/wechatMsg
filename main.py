@@ -5,15 +5,15 @@ from datetime import datetime, date
 from zhdate import ZhDate
 import sys
 import os
- 
- 
+
+
 def get_color():
     # 获取随机颜色
     get_colors = lambda n: list(map(lambda i: "#" + "%06x" % random.randint(0, 0xFFFFFF), range(n)))
     color_list = get_colors(100)
     return random.choice(color_list)
- 
- 
+
+
 def get_access_token():
     # appId
     app_id = config["app_id"]
@@ -29,8 +29,8 @@ def get_access_token():
         sys.exit(1)
     # print(access_token)
     return access_token
- 
- 
+
+
 def get_weather(region):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
@@ -59,8 +59,8 @@ def get_weather(region):
     # 风向
     wind_dir = response["now"]["windDir"]
     return weather, temp, wind_dir
- 
- 
+
+
 def get_birthday(birthday, year, today):
     birthday_year = birthday.split("-")[0]
     # 判断是否为农历生日
@@ -78,7 +78,7 @@ def get_birthday(birthday, year, today):
         birthday_day = birthday.day
         # 今年生日
         year_date = date(year, birthday_month, birthday_day)
- 
+
     else:
         # 获取国历生日的今年对应月和日
         birthday_month = int(birthday.split("-")[1])
@@ -100,8 +100,27 @@ def get_birthday(birthday, year, today):
         birth_date = year_date
         birth_day = str(birth_date.__sub__(today)).split(" ")[0]
     return birth_day
- 
- 
+
+def get_today_day(num):
+    # 注释如果要自己手动改
+    if num == 0:
+        note_en = "一定要好好享受周末的最后一天！不要老是想着明天要上班了就emo,珍惜今天！"
+    elif num == 1:
+        note_en = "又要开始上班啦，又有钱钱拿"
+    elif num == 2:
+        note_en = "今天是个好日子，也不知道昨天的班上的怎么样。希望今天也有好运气"
+    elif num == 3:
+        note_en = "马上一周就要过去一半啦，今天回家吃点香香的"
+    elif num ==4:
+        note_en = "再挺两天就周末啦,周四也是要好好上班的一天"
+    elif num ==5:
+        note_en = "周五啦！再过几个小时就可以享受周末咯"
+    elif num == 6:
+        note_en = "美好的一天开始啦，你这个小猪仔现在肯定还没起床"
+    else:
+        note_en = "出错啦,再等等我修复吧"
+    return note_en;
+    
 def get_ciba_en():
     url = "http://open.iciba.com/dsapi/"
     headers = {
@@ -112,7 +131,7 @@ def get_ciba_en():
     r = get(url, headers=headers)
     note_en = r.json()["content"]
     return note_en
-   
+
 def get_ciba_ch():
     url = "http://open.iciba.com/dsapi/"
     headers = {
@@ -133,26 +152,8 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     day = localtime().tm_mday
     today = datetime.date(datetime(year=year, month=month, day=day))
     week = week_list[today.isoweekday() % 7]
-    
-    num = today.isoweekday() % 7
-    # 注释如果要自己手动改
-    if num == 0:
-        note_en = "一定要好好享受周末的最后一天！不要老是想着明天要上班了就emo,珍惜今天！"
-    elif num == 1:
-        note_en = "又要开始上班啦，又有钱钱拿"
-    elif num == 2:
-       note_en = "今天是个好日子，也不知道昨天的班上的怎么样。希望今天也有好运气" 
-    elif num == 3:
-       note_en = "马上一周就要过去一半啦，今天回家吃点香香的"
-    elif num ==4:
-       note_en = "再挺两天就周末啦,周四也是要好好上班的一天"
-    elif num ==5:
-       note_en = "周五啦！再过几个小时就可以享受周末咯"
-    elif num == 6:
-       note_en = "美好的一天开始啦，你这个小猪仔现在肯定还没起床"
- 
-    
-       
+    note_en = get_today_day(today.isoweekday() % 7)
+
     # 获取在一起的日子的日期格式
     love_year = int(config["love_date"].split("-")[0])
     love_month = int(config["love_date"].split("-")[1])
@@ -230,8 +231,8 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
         print("推送消息成功")
     else:
         print(response)
- 
- 
+
+
 if __name__ == "__main__":
     try:
         with open("config.txt", encoding="utf-8") as f:
@@ -244,8 +245,8 @@ if __name__ == "__main__":
         print("推送消息失败，请检查配置文件格式是否正确")
         os.system("pause")
         sys.exit(1)
- 
-    
+
+
     # 获取accessToken
     accessToken = get_access_token()
     # 接收的用户
@@ -255,13 +256,13 @@ if __name__ == "__main__":
     weather, temp, wind_dir = get_weather(region)
     note_ch = config["note_ch"]
     note_en = config["note_en"]
-    
+
     if note_ch == "":
-     note_ch = get_ciba_ch()
+        note_ch = get_ciba_ch()
     if note_en == "":
-     note_en = get_ciba_en()
-    
-                                          
+        note_en = get_ciba_en()
+
+
     # 公众号推送消息
     for user in users:
         send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en)
