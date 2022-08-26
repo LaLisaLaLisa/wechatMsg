@@ -116,7 +116,7 @@ def get_today_day(num,note_en):
     else:
         note_en = "出错啦,再等等我修复吧"
     # 微信平台配置
-    return note_en + str(random_emoji());
+    return note_en + str(random_emoji())
 
 def get_ciba_en():
     url = "http://open.iciba.com/dsapi/"
@@ -142,11 +142,11 @@ def get_ciba_ch():
 
 # 根据时间打招呼
 def get_greet_note(greet_note,time):
-    if 8 <= time & time<=10:
+    if 8 <= time & time<=9:
         greet_note = "早上好呀，今天也是活力满满的一天"
-    elif 12<= time & time<=14:
+    elif 12<= time & time<=13:
         greet_note = "中午啦，有没有好好吃饭鸭"
-    elif 16<= time & time<=18:
+    elif 16<= time & time<=17:
         greet_note = "终于休息咯，快回家躺在床上当个咸鱼吧"
     else:
         greet_note = "今日份播报来啦"
