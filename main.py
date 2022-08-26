@@ -263,7 +263,8 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
                 "color": get_color()
             },
             "greet_note": {
-                "value": "{} {} {}".format(str(random_emoji()), greet_note, str(random_emoji())),
+                # "value": "{} {} {}".format(str(random_emoji()), greet_note, str(random_emoji())),
+                "value":  greet_note,
                 "color": get_color()
             },
             "handwrite_msg": {
