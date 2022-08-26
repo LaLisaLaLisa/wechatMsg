@@ -154,10 +154,12 @@ def get_greet_note(greet_note,time):
         greet_note = "终于休息咯，快回家躺在床上当个咸鱼吧"
     else:
         greet_note = "今日份播报来啦"
-    return greet_note + str(random_emoji())
+    return str(random_emoji()) + greet_note + str(random_emoji())
 
 def random_emoji():
-    EmojiList = ['♡(*ฅˊ˘ˋฅ*)♡','(๑ `▽´๑)','(*´°`*)','꒰*´◒`*꒱']
+    EmojiList = ['♡(*ฅˊ˘ˋฅ*)♡','(๑ `▽´๑)','(*´°`*)','꒰*´◒`*꒱','ॱଳॱ','꒳ᵒ꒳ᵎᵎᵎ','๐˙Ⱉ˙๐','( ๑ˊ•̥▵•)੭₎₎',' ⁄(⁄⁄•⁄ω⁄•⁄⁄)⁄ ','(⑉･⌓･⑉)',
+                 '(⑉･-･⑉)','꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱','( ᐖ )','(˶˚ ᗨ ˚˶)','(๑•̀ㅂ•́)','୧((〃•̀ꇴ•〃))૭⁺','(๑˃́ꇴ˂̀๑)','(๑ `▽´๑)','✧ (๑•̀ㅁ•́ฅ)',
+                 '(๑ ๑)♡','*ଘ(♡⸝⸝•༝•⸝⸝)੭','*ଘ(੭*ˊᵕˋ)੭* ੈ♡‧₊˚','(•̤̀ᵕ•̤ )ᵒᵏᵎᵎᵎᵎ','(୨୧•͈ᴗ•͈)','(•̀ᴗ•́)',' ʕ๑•ɷ•๑ʔ','ʕ๑•ɷ•๑ʔ']
     return EmojiList[random.randint(0, len(EmojiList)-1)]
 
 def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en, extra_msg,greet_note):
