@@ -158,14 +158,13 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     today = datetime.date(datetime(year=year, month=month, day=day))
     week = week_list[today.isoweekday() % 7]
     
-    """ 手动转换时间
+     #  手动转换时间
     utc = timezone.utc
     utc_time = datetime.utcnow().replace(tzinfo=utc)
     newyork_time = timezone(timedelta(hours=-4))
-    time_newyork = utc_time.astimezone(newyork_time)"""
+    time_newyork = utc_time.astimezone(newyork_time)
     
-  #  extra_msg = datetime.now()
-    extra_msg = str(datetime.now().date())
+    extra_msg = str(time_newyork.date())
     
     
 # 根据星期几 发送不同的配置句子
