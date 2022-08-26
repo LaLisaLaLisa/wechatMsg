@@ -116,7 +116,8 @@ def get_today_day(num,note_en):
     else:
         note_en = "出错啦,再等等我修复吧"
     # 微信平台配置
-    return note_en + str(random_emoji()) 
+   # return note_en + str(random_emoji()) 
+    return note_en
 
 def get_ciba_en():
     url = "http://open.iciba.com/dsapi/"
