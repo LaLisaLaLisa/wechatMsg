@@ -165,16 +165,13 @@ def get_greet_note(greet_note, time, isDayOff):
 
 
 # 随机表情
-def get_random_emoji():
+def get_random_emoji(emoji):
     emojiList = ["♡(*ฅˊ˘ˋฅ*)♡", "(๑ `▽´๑)", "(*´°`*)", "꒰*´◒`*꒱", "ॱଳॱ", "꒳ᵒ꒳ᵎᵎᵎ", "๐˙Ⱉ˙๐", "( ๑ˊ•̥▵•)੭₎₎",
-                 " ⁄(⁄⁄•⁄ω⁄•⁄⁄)⁄ ", "(⑉･⌓･⑉)",
-                 "(⑉･-･⑉)", "꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱", "( ᐖ )", "(˶˚ ᗨ ˚˶)", "(๑•̀ㅂ•́)", "୧((〃•̀ꇴ•〃))૭⁺", "(๑˃́ꇴ˂̀๑)", "(๑ `▽´๑)",
-                 "✧(๑•̀ㅁ•́ฅ)",
-                 "(๑ ๑)♡", "*ଘ(♡⸝⸝•༝•⸝⸝)੭", "*ଘ(੭*ˊᵕˋ)੭* ੈ♡‧₊˚", "(•̤̀ᵕ•̤ )ᵒᵏᵎᵎᵎᵎ", "(୨୧•͈ᴗ•͈)", "(•̀ᴗ•́)", " ʕ๑•ɷ•๑ʔ",
-                 "ʕ๑•ɷ•๑ʔ"]
-    holder = emojiList[random.randint(0, len(emojiList) - 1)]
-    # return holder
-    return "ʕ๑•ɷ•๑ʔ"
+                 " ⁄(⁄⁄•⁄ω⁄•⁄⁄)⁄ ", "(⑉･⌓･⑉)", "(⑉･-･⑉)", "꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱", "( ᐖ )", "(˶˚ ᗨ ˚˶)", "(๑•̀ㅂ•́)", "(๑˃́ꇴ˂̀๑)",
+                 "(๑ `▽´๑)", "✧(๑•̀ㅁ•́ฅ)", "(๑ ๑)♡", "*ଘ(♡⸝⸝•༝•⸝⸝)੭", "*ଘ(੭*ˊᵕˋ)੭* ੈ♡‧₊˚", "(୨୧•͈ᴗ•͈)", "(•̀ᴗ•́)",
+                 " ʕ๑•ɷ•๑ʔ"]
+    emoji = emojiList[random.randint(0, len(emojiList) - 1)]
+    return emoji
 
 
 def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en, extra_msg,
@@ -264,7 +261,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
                 "color": get_color()
             },
             "greet_note": {
-                "value": "{} {} {}".format(str(get_random_emoji()), greet_note, str(get_random_emoji())),
+                "value": "{} {} {}".format(str(get_random_emoji(" ")), greet_note, str(get_random_emoji(" "))),
                 # "value":  greet_note,
                 "color": get_color()
             },
