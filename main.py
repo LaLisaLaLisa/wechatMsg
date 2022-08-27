@@ -201,8 +201,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
         greet_note = get_greet_note(greet_note, curr_time.hour, False)
 
     # 根据星期几 发送不同的配置句子
-    # extra_msg = get_today_day(today.isoweekday() % 7, extra_msg)
-    extra_msg = str(today.isoweekday() % 7)
+    extra_msg = get_today_day(today.isoweekday() % 7, extra_msg)
     
     # 获取在一起的日子的日期格式
     love_year = int(config["love_date"].split("-")[0])
