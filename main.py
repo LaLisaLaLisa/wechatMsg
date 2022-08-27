@@ -116,7 +116,7 @@ def get_today_day(num, note_en):
     elif num == 5:
         note_en = "周五啦！再过几个小时就可以享受周末咯"
     elif num == 6:
-        note_en = "美好的一天开始啦，你这个小猪仔现在肯定还没起床"
+        note_en = "终于到了期待的周六啦"
     else:
         note_en = "出错啦,再等等我修复吧"
     # 微信平台配置
