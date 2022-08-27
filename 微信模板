@@ -1,0 +1,16 @@
+{{greet_note.DATA}}
+
+日期：{{date.DATA}}
+天气：{{weather.DATA}}
+风向：{{wind_dir.DATA}}
+当前温度：{{temp.DATA}}
+地点：{{region.DATA}}
+
+生日：{{birthday.DATA}}
+天数计算：{{love_day.DATA}}天
+
+今日份敷衍：{{extra_msg.DATA}}
+今日份不敷衍：{{handwrite_msg.DATA}}
+
+今日份鸡汤: {{note_ch.DATA}}
+英语本鸡汤：{{note_en.DATA}}
