@@ -195,10 +195,10 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     week = week_list[today.isoweekday() % 7]
 
     # 时间更换打招呼
-    if (today.isoweekday() % 7) < 5:
-        greet_note = get_greet_note(greet_note, curr_time.hour, False)
-    else:
-        greet_note = get_greet_note(greet_note, curr_time.hour, True)
+    #if (today.isoweekday() % 7) < 5:
+     #   greet_note = get_greet_note(greet_note, curr_time.hour, False)
+   # else:
+    greet_note = get_greet_note(greet_note, curr_time.hour, True)
 
     # 根据星期几 发送不同的配置句子
     extra_msg = get_today_day(today.isoweekday() % 7, extra_msg)
