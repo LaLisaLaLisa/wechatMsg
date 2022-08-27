@@ -157,7 +157,11 @@ def get_greet_note(greet_note, time, isDayOff):
         greet_note = "终于休息咯，快回家躺在床上当个咸鱼吧"
     elif time <= 1 & isDayOff:
         greet_note = "快起来玩游戏啦，当然也别忘了要好好休息，周末愉快，努力把把吃鸡"
-    elif (23 <= time | time <= 1) & isDayOff == False:
+    elif 23 <= time & isDayOff:
+        greet_note = "快起来玩游戏啦，当然也别忘了要好好休息，周末愉快，努力把把吃鸡"
+    elif 23 <= time & isDayOff == False:
+        greet_note = "该睡觉啦，放下手机订好闹钟，明天还是打工人的一天，晚安"
+    elif time <= 1 & isDayOff == False:
         greet_note = "该睡觉啦，放下手机订好闹钟，明天还是打工人的一天，晚安"
     else:
         greet_note = "今日份播报来啦"
