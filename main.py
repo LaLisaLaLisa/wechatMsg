@@ -157,8 +157,8 @@ def get_greet_note(greet_note, time, isDayOff):
         greet_note = "终于休息咯，快回家躺在床上当个咸鱼吧"
     elif (23 <= time | time <= 1) & isDayOff == True:
         greet_note = "快起来玩游戏啦，当然也别忘了要好好休息，周末愉快，努力把把吃鸡"
-    #elif (23 <= time | time <= 1) & isDayOff == False:
-     #   greet_note = "该睡觉啦，放下手机订好闹钟，明天还是打工人的一天，晚安"
+    elif (23 <= time | time <= 1) & isDayOff == False:
+        greet_note = "该睡觉啦，放下手机订好闹钟，明天还是打工人的一天，晚安"
     else:
         greet_note = "今日份播报来啦"
     return greet_note
@@ -195,10 +195,10 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     week = week_list[today.isoweekday() % 7]
 
     # 时间更换打招呼
-    if (today.isoweekday() % 7) >= 5:
-        greet_note = get_greet_note(greet_note, curr_time.hour, True)
-    else:
+    if (today.isoweekday() % 7) < 5:
         greet_note = get_greet_note(greet_note, curr_time.hour, False)
+    else:
+        greet_note = get_greet_note(greet_note, curr_time.hour, True)
 
     # 根据星期几 发送不同的配置句子
     extra_msg = get_today_day(today.isoweekday() % 7, extra_msg)
