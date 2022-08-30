@@ -31,7 +31,7 @@
 "note_en": "",
 
 # 不敷衍 需要自己改 
-"handwrite_msg" : "暂时没有，还在测试！",
+"handwrite_msg" : "虽然在下雨，但还是感觉好热",
 
 # 敷衍的 留空就好
 "extra_msg" : "",
