@@ -149,19 +149,19 @@ def get_ciba_ch():
 
 # 根据时间打招呼
 def get_greet_note(greet_note, time, isDayOff):
-    if 8 <= time & time <= 9:
+    if 8 <= time and time <= 9:
         greet_note = "早上好呀，今天也是活力满满的一天"
-    elif 12 <= time & time <= 13:
+    elif 12 <= time and time <= 13:
         greet_note = "中午啦，有没有好好吃饭鸭"
-    elif 17 <= time & time <= 18:
+    elif 17 <= time and time <= 18:
         greet_note = "终于休息咯，快回家躺在床上当个咸鱼吧"
-    elif time <= 1 & isDayOff == True:
+    elif time <= 1 and isDayOff == True:
         greet_note = "快起来玩游戏啦，当然也别忘了要好好休息，周末愉快，努力把把吃鸡"
-    elif 23 <= time & isDayOff == True:
+    elif 23 <= time and isDayOff == True:
         greet_note = "快起来玩游戏啦，当然也别忘了要好好休息，周末愉快，努力把把吃鸡"
-    elif 23 <= time & isDayOff == False:
+    elif 23 <= time and isDayOff == False:
         greet_note = "该睡觉啦，放下手机订好闹钟，明天还是打工人的一天，晚安"
-    elif time <= 1 & isDayOff == False:
+    elif time <= 1 and isDayOff == False:
         greet_note = "该睡觉啦，放下手机订好闹钟，明天还是打工人的一天，晚安"
     else:
         greet_note = "今日份播报来啦"
